@@ -20,6 +20,8 @@ function SearchBody({ searchStr, drpDwnFilter }) {
 
     useEffect(() => {
         let srchArr = [];
+        let titleFlag, descFlag, keyFlag;
+
         console.log(drpDwnFilter);
         setSearchStrArr(searchStr.split(' '));
         setFilterChkArr(drpDwnFilter);
@@ -28,7 +30,24 @@ function SearchBody({ searchStr, drpDwnFilter }) {
 
 
         const results = songsList.filter(song => {
-            return srchArr?.find(str => song.title.toLowerCase().includes(str))
+            titleFlag = descFlag = keyFlag = false;
+            return srchArr?.find(str => {
+                if (drpDwnFilter[1].flag) {
+                    titleFlag = song.title.toLowerCase().includes(str);
+                }
+
+                if (drpDwnFilter[2].flag) {
+                    descFlag = song.description[0].toLowerCase().includes(str);
+                }
+
+                if (drpDwnFilter[3].flag) {
+                    keyFlag = srchArr?.find(str => {
+                        return song.keywords?.find(keywrd => keywrd.toLowerCase() === str)
+                    })
+                }
+
+                return (titleFlag || descFlag || keyFlag);
+            })
         });
 
 
