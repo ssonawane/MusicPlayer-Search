@@ -33,12 +33,12 @@ function MusicList({ title, supplement_information, description, links, searchSt
 
 
             <p><i>{supplement_information}</i></p>
-            <p>{<Highlighter
+            <p>{filterChkArr[2].flag ? <Highlighter
                 highlightClassName={style.highlight}
                 searchWords={searchStrArr}
                 autoEscape={true}
                 textToHighlight={(description[0])}
-            />}</p>
+            /> : parse(description[0])}</p>
 
             <div>
                 <a className={style.playLink} href={links?.[0]?.file_url || '#'}>{links?.[0]?.text}</a>

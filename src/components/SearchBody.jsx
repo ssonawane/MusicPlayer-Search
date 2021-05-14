@@ -20,7 +20,7 @@ function SearchBody({ searchStr, drpDwnFilter }) {
 
     useEffect(() => {
         let srchArr = [];
-
+        console.log(drpDwnFilter);
         setSearchStrArr(searchStr.split(' '));
         setFilterChkArr(drpDwnFilter);
 

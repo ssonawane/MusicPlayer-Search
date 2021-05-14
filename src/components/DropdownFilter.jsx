@@ -15,7 +15,9 @@ function DropdownFilter({ getDrpDwnFilter }) {
         const filteredArr = [...checkedItems];
 
         filteredArr.forEach(item => {
-            if (item.value === e.target.value) {
+            if (e.target.value === 'all') {
+                item.flag = e.target.checked;
+            } else if (item.value === e.target.value) {
                 item.flag = e.target.checked
             }
         })
