@@ -6,8 +6,8 @@ import Highlighter from "react-highlight-words";
 function SearchBody({ searchStr, drpDwnFilter }) {
     const [songsList, setSongsList] = useState([]);
     const [searchStrArr, setSearchStrArr] = useState([]);
-    const [filterArr, setFilterArr] = useState([]);
     const [filteredList, setFilteredList] = useState([]);
+    const [filterChkArr, setFilterChkArr] = useState([]);
 
     useEffect(() => {
         axios.get('./data.json').then(resp => {
@@ -19,30 +19,29 @@ function SearchBody({ searchStr, drpDwnFilter }) {
     }, []);
 
     useEffect(() => {
+        let srchArr = [];
 
         setSearchStrArr(searchStr.split(' '));
-        let filterFlag = false;
-        let filtered = [];
-        songsList.forEach(obj => {
-            filterFlag = false;
-            searchStrArr.forEach(str => {
-                if (obj.title.toLowerCase().includes(str.toLowerCase())) {
-                    filterFlag = true;
-                }
-            })
+        setFilterChkArr(drpDwnFilter);
 
-            if (filterFlag) {
-                filtered.push(obj)
-            }
-        })
-        setFilteredList(filtered);
+        srchArr = searchStr.match(/\w+|"[^"]+"/g);
+
+
+        const results = songsList.filter(song => {
+            return srchArr?.find(str => song.title.toLowerCase().includes(str))
+        });
+
+
+        results?.length === 0 ? setFilteredList(songsList) : setFilteredList(results)
+
+        //setFilteredList(results);
 
     }, [searchStr, drpDwnFilter])
 
 
     return <div>
         {
-            filteredList.map(song => <MusicList key={song.title} {...song} searchStrArr={searchStrArr} />)
+            filteredList.map(song => <MusicList key={song.title} {...song} searchStrArr={searchStrArr} filterChkArr={filterChkArr} />)
         }
     </div>
 }

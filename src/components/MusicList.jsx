@@ -4,7 +4,7 @@ import parse from 'html-react-parser';
 import Highlighter from "./HighLighter";
 import sanitizeHtml from 'sanitize-html';
 
-function MusicList({ title, supplement_information, description, links, searchStrArr }) {
+function MusicList({ title, supplement_information, description, links, searchStrArr, filterChkArr }) {
 
     let pdfLink = '';
     let pdfUrl = '';
@@ -17,7 +17,6 @@ function MusicList({ title, supplement_information, description, links, searchSt
     })
 
 
-
     return <div className={style.listHeader}>
         <div>
             <img src='./music_placeholder.png' className={style.imgHolder} />
@@ -25,12 +24,12 @@ function MusicList({ title, supplement_information, description, links, searchSt
         <div className={style.songDetails}>
 
 
-            <p><strong>{<Highlighter
+            <p><strong>{filterChkArr[1].flag ? <Highlighter
                 highlightClassName={style.highlight}
                 searchWords={searchStrArr}
                 autoEscape={true}
                 textToHighlight={title}
-            />}</strong></p>
+            /> : title}</strong></p>
 
 
             <p><i>{supplement_information}</i></p>
