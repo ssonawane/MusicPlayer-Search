@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Checkbox from './CheckBox';
 
-function DropdownFilter() {
+function DropdownFilter({ getDrpDwnFilter }) {
     const defaultArr =
         [{ flag: true, value: 'all', text: 'All' },
         { flag: false, value: 'title', text: 'Title' },
@@ -21,9 +21,9 @@ function DropdownFilter() {
         })
 
         setCheckedItems(filteredArr)
-
-        console.log(checkedItems);
     }
+
+    getDrpDwnFilter(checkedItems);
 
     return <div className="dropdown">
         <a href="#" className="dropbtn">

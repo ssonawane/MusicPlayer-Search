@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./components/Navbar";
-import SearchInput from "./components/SearchInput";
-import DropdownFilter from "./components/DropdownFilter";
 import SearchBody from "./components/SearchBody";
 
 function App() {
+  const [searchStr, setSearchStr] = useState("");
+  const [drpDwnFilter, setDrpDwnFilter] = useState([]);
+
+  const getSearchIp = (srchStr) => {
+    setSearchStr(srchStr);
+  };
+
+  const getDrpDwnFilter = (filter) => {
+    setDrpDwnFilter(filter);
+  };
+
   return (
     <React.Fragment>
-      <Navbar>
-        <DropdownFilter />
-        <SearchInput />
-      </Navbar>
-      <SearchBody />
+      <Navbar getSearchIp={getSearchIp} getDrpDwnFilter={getDrpDwnFilter} />
+      <SearchBody searchStr={searchStr} drpDwnFilter={drpDwnFilter} />
     </React.Fragment>
   );
 }

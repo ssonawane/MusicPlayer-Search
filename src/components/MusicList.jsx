@@ -1,8 +1,10 @@
 import React from 'react';
 import style from './MusicList.module.css';
 import parse from 'html-react-parser';
+import Highlighter from "./HighLighter";
+import sanitizeHtml from 'sanitize-html';
 
-function MusicList({ title, supplement_information, description, links }) {
+function MusicList({ title, supplement_information, description, links, searchStrArr }) {
 
     let pdfLink = '';
     let pdfUrl = '';
@@ -14,14 +16,31 @@ function MusicList({ title, supplement_information, description, links }) {
         }
     })
 
+
+
     return <div className={style.listHeader}>
         <div>
             <img src='./music_placeholder.png' className={style.imgHolder} />
         </div>
         <div className={style.songDetails}>
-            <p><strong>{title}</strong></p>
+
+
+            <p><strong>{<Highlighter
+                highlightClassName={style.highlight}
+                searchWords={searchStrArr}
+                autoEscape={true}
+                textToHighlight={title}
+            />}</strong></p>
+
+
             <p><i>{supplement_information}</i></p>
-            <p>{description?.[0] && parse(description?.[0])}</p>
+            <p>{<Highlighter
+                highlightClassName={style.highlight}
+                searchWords={searchStrArr}
+                autoEscape={true}
+                textToHighlight={(description[0])}
+            />}</p>
+
             <div>
                 <a className={style.playLink} href={links?.[0]?.file_url || '#'}>{links?.[0]?.text}</a>
             </div>
