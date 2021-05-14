@@ -32,6 +32,7 @@ function SearchBody({ searchStr, drpDwnFilter }) {
         const results = songsList.filter(song => {
             titleFlag = descFlag = keyFlag = false;
             return srchArr?.find(str => {
+                str = str.toLowerCase();
                 if (drpDwnFilter[1].flag) {
                     titleFlag = song.title.toLowerCase().includes(str);
                 }

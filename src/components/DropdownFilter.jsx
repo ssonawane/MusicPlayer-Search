@@ -18,9 +18,14 @@ function DropdownFilter({ getDrpDwnFilter }) {
             if (e.target.value === 'all') {
                 item.flag = e.target.checked;
             } else if (item.value === e.target.value) {
-                item.flag = e.target.checked
+                item.flag = e.target.checked;
+                filteredArr[0].flag = false;
             }
         })
+
+        if (filteredArr[1].flag && filteredArr[2].flag && filteredArr[3].flag) {
+            filteredArr[0].flag = true;
+        }
 
         setCheckedItems(filteredArr)
     }
