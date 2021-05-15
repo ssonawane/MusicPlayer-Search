@@ -1,13 +1,18 @@
 import React from 'react';
+import style from './Checkbox.module.css';
 
 function Checkbox({ changeHandler, text, value, flag }) {
 
-    return <React.Fragment>
-        <div className="dropdown-option">
-            <input type="checkbox" name="dropdown-group" onChange={changeHandler} value={value} checked={flag} />
-            {text}
-        </div>
-    </React.Fragment>
+    return <div className={style.checkboxContainer}>
+        <label className={style.container}>{text}
+            <input type="checkbox" onChange={changeHandler} value={value} checked={flag} />
+            <span className={style.checkmark}></span>
+        </label>
+    </div>
+
+
+
+
 
 }
 

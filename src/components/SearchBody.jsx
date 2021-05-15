@@ -22,7 +22,6 @@ function SearchBody({ searchStr, drpDwnFilter }) {
         let srchArr = [];
         let titleFlag, descFlag, keyFlag;
 
-        console.log(drpDwnFilter);
         setSearchStrArr(searchStr.split(' '));
         setFilterChkArr(drpDwnFilter);
 

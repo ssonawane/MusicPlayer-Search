@@ -32,8 +32,8 @@ function MusicList({ title, supplement_information, description, links, searchSt
             /> : title}</strong></p>
 
 
-            <p><i>{supplement_information}</i></p>
-            <p>{filterChkArr[2].flag ? <Highlighter
+            <p className={style.descFont}><i>{supplement_information}</i></p>
+            <p className={style.descFont}>{filterChkArr[2].flag ? <Highlighter
                 highlightClassName={style.highlight}
                 searchWords={searchStrArr}
                 autoEscape={true}
