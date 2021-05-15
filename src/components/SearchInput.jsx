@@ -13,7 +13,7 @@ function SearchInput({ getSearchIp }) {
 
     return <div className="search">
         <form>
-            <input type="text" placeholder="Search" value={searchIp} onChange={clickHandler} name="search" />
+            <input data-testid="input-search" type="text" placeholder="Search" value={searchIp} onChange={clickHandler} name="search" />
         </form>
     </div>
 }

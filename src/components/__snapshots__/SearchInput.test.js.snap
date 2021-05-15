@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Check box check snapshot 1`] = `
+<div
+  className="search"
+>
+  <form>
+    <input
+      data-testid="input-search"
+      name="search"
+      onChange={[Function]}
+      placeholder="Search"
+      type="text"
+      value=""
+    />
+  </form>
+</div>
+`;

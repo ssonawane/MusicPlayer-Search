@@ -9,7 +9,7 @@ function MusicList({ title, supplement_information, description, links, searchSt
     let pdfLink = '';
     let pdfUrl = '';
 
-    links.forEach(link => {
+    links?.forEach(link => {
         if (link.type === 'link') {
             pdfLink = link.text;
             pdfUrl = link.file_url
@@ -18,13 +18,13 @@ function MusicList({ title, supplement_information, description, links, searchSt
 
 
     return <div className={style.listHeader}>
-        <div>
+        <div data-testid="img-placeholder">
             <img src='./music_placeholder.png' className={style.imgHolder} />
         </div>
         <div className={style.songDetails}>
 
 
-            <p><strong>{filterChkArr[1].flag ? <Highlighter
+            <p data-testid="title"><strong>{filterChkArr?.[1].flag ? <Highlighter
                 highlightClassName={style.highlight}
                 searchWords={searchStrArr}
                 autoEscape={true}
@@ -32,18 +32,18 @@ function MusicList({ title, supplement_information, description, links, searchSt
             /> : title}</strong></p>
 
 
-            <p className={style.descFont}><i>{supplement_information}</i></p>
-            <p className={style.descFont}>{filterChkArr[2].flag ? <Highlighter
+            <p data-testid="information" className={style.descFont}><i>{supplement_information}</i></p>
+            <p data-testid="description" className={style.descFont}>{filterChkArr?.[2].flag ? <Highlighter
                 highlightClassName={style.highlight}
                 searchWords={searchStrArr}
                 autoEscape={true}
                 textToHighlight={(description[0])}
-            /> : parse(description[0])}</p>
+            /> : parse(description?.[0] ? description?.[0] : '')}</p>
 
-            <div>
+            <div data-testid="playlink">
                 <a className={style.playLink} href={links?.[0]?.file_url || '#'}>{links?.[0]?.text}</a>
             </div>
-            <div>
+            <div data-testid="pdflink">
                 <a className={style.pdfLink} href={pdfUrl || '#'}>{pdfLink || ''}</a>
             </div>
         </div>

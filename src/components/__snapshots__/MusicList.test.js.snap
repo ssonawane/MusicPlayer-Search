@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MusicList renders component 1`] = `
+<div
+  className="listHeader"
+>
+  <div
+    data-testid="img-placeholder"
+  >
+    <img
+      className="imgHolder"
+      src="./music_placeholder.png"
+    />
+  </div>
+  <div
+    className="songDetails"
+  >
+    <p
+      data-testid="title"
+    >
+      <strong>
+        <span>
+          <span
+            className=""
+          >
+            Growing in 
+          </span>
+          <mark
+            className="highlight "
+            style={Object {}}
+          >
+            Faith
+          </mark>
+          <span
+            className=""
+          >
+            , Growing in Christ (Version 2)
+          </span>
+        </span>
+      </strong>
+    </p>
+    <p
+      className="descFont"
+      data-testid="information"
+    >
+      <i>
+        (Duration: 2 min 49 sec)
+      </i>
+    </p>
+    <p
+      className="descFont"
+      data-testid="description"
+    >
+      Words 
+      <em>
+        and
+      </em>
+       Music by: Jan Bentham
+    </p>
+    <div
+      data-testid="playlink"
+    >
+      <a
+        className="playLink"
+        href="../spp_embed/index.php?sppid=ca_sch_aud_bishops_gifgic_6_001"
+      >
+        Play Vocal
+      </a>
+    </div>
+    <div
+      data-testid="pdflink"
+    >
+      <a
+        className="pdfLink"
+        href="../music/lyrics_score/re6_01_lysc_grow_faith_v2.pdf"
+      >
+        Lyrics and Score (PDF)
+      </a>
+    </div>
+  </div>
+</div>
+`;

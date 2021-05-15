@@ -60,7 +60,7 @@ function SearchBody({ searchStr, drpDwnFilter }) {
 
     return <div>
         {
-            filteredList.map(song => <MusicList key={song.title} {...song} searchStrArr={searchStrArr} filterChkArr={filterChkArr} />)
+            filteredList.map(song => <MusicList data-testid="music-list" key={song.title} {...song} searchStrArr={searchStrArr} filterChkArr={filterChkArr} />)
         }
     </div>
 }
