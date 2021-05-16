@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders learn react link 1`] = `
+exports[`Navbar   renders learn react link 1`] = `
 <div
   className="main"
 >
@@ -9,12 +9,14 @@ exports[`renders learn react link 1`] = `
   >
     <a
       className="dropbtn"
+      data-testid="activity"
       href="#"
     >
       Activities
     </a>
     <div
       className="dropdown-content"
+      data-testid="drpdwn-content"
     >
       <div
         className="checkboxContainer"

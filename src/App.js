@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Navbar from "./components/Navbar";
-import SearchBody from "./components/SearchBody";
+import Navbar from "./components/navbar/Navbar";
+import SearchBody from "./components/searchbody/SearchBody";
 
 function App() {
   const [searchStr, setSearchStr] = useState("");

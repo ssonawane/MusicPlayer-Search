@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Checkbox from './CheckBox';
+import Checkbox from '../checkbox/CheckBox';
 
 function DropdownFilter({ getDrpDwnFilter }) {
     const defaultArr =
@@ -35,10 +35,10 @@ function DropdownFilter({ getDrpDwnFilter }) {
     }, [checkedItems])
 
     return <div className="dropdown">
-        <a href="#" className="dropbtn">
+        <a href="#" data-testid="activity" className="dropbtn">
             Activities
         </a>
-        <div className="dropdown-content">
+        <div data-testid="drpdwn-content" className="dropdown-content">
             {
                 checkedItems.map(item => <Checkbox key={item.value} changeHandler={changeHandler} {...item} />)
             }

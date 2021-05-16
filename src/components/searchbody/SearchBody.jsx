@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import MusicList from './MusicList';
+import MusicList from '../musiclist/MusicList';
 
 function SearchBody({ searchStr, drpDwnFilter }) {
     const [songsList, setSongsList] = useState([]);

@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Navbar.css";
-import SearchInput from "./SearchInput";
-import DropdownFilter from "./DropdownFilter";
+import SearchInput from "../searchinput/SearchInput";
+import DropdownFilter from "../dropdown/DropdownFilter";
 
 function Navbar(props) {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './MusicList.module.css';
 import parse from 'html-react-parser';
-import Highlighter from "./HighLighter";
+import Highlighter from "../higlighter/HighLighter";
 import sanitizeHtml from 'sanitize-html';
 
 function MusicList({ title, supplement_information, description, links, searchStrArr, filterChkArr }) {
