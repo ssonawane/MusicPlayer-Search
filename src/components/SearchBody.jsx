@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import MusicList from './MusicList';
-import Highlighter from "react-highlight-words";
 
 function SearchBody({ searchStr, drpDwnFilter }) {
     const [songsList, setSongsList] = useState([]);
@@ -51,7 +50,11 @@ function SearchBody({ searchStr, drpDwnFilter }) {
         });
 
 
-        results?.length === 0 ? setFilteredList(songsList) : setFilteredList(results)
+        if (srchArr?.length) {
+            results?.length === 0 ? setFilteredList([]) : setFilteredList(results)
+        } else {
+            setFilteredList(songsList);
+        }
 
         //setFilteredList(results);
 
@@ -60,7 +63,8 @@ function SearchBody({ searchStr, drpDwnFilter }) {
 
     return <div>
         {
-            filteredList.map(song => <MusicList data-testid="music-list" key={song.title} {...song} searchStrArr={searchStrArr} filterChkArr={filterChkArr} />)
+            (filteredList.length === 0 && searchStrArr.length !== 0) ? <h3 style={{ textAlign: "center" }}>No Result found !!!</h3> :
+                filteredList.map(song => <MusicList data-testid="music-list" key={song.title} {...song} searchStrArr={searchStrArr} filterChkArr={filterChkArr} />)
         }
     </div>
 }
