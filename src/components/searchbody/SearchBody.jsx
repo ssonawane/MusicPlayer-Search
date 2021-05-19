@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState, useContext } from 'react';
 import MusicList from '../musiclist/MusicList';
+import { context } from '../../App'
 
 function SearchBody({ searchStr, drpDwnFilter }) {
     const [songsList, setSongsList] = useState([]);
@@ -8,13 +8,12 @@ function SearchBody({ searchStr, drpDwnFilter }) {
     const [filteredList, setFilteredList] = useState([]);
     const [filterChkArr, setFilterChkArr] = useState([]);
 
+    const musicListArr = useContext(context);
+
+
     useEffect(() => {
-        axios.get('./data.json').then(resp => {
-            setSongsList(resp.data.sections[0].assets)
-            setFilteredList(resp.data.sections[0].assets);
-        }).catch(err => {
-            console.log("error", err)
-        })
+        setSongsList(musicListArr);
+        setFilteredList(musicListArr);
     }, []);
 
     useEffect(() => {
@@ -31,21 +30,32 @@ function SearchBody({ searchStr, drpDwnFilter }) {
             titleFlag = descFlag = keyFlag = false;
             return srchArr?.find(str => {
                 str = str.toLowerCase();
-                if (drpDwnFilter[1].flag) {
-                    titleFlag = song.title.toLowerCase().includes(str);
+                let result = false;
+                for (let obj of drpDwnFilter) {
+                    if (obj?.flag) {
+                        let checkType = obj.value;
+                        result = song[checkType]?.toString().toLowerCase().includes(str);
+                        if (result) {
+                            break;
+                        }
+                    }
                 }
 
-                if (drpDwnFilter[2].flag) {
-                    descFlag = song.description[0].toLowerCase().includes(str);
-                }
+                // if (drpDwnFilter[1].flag) {
+                //     titleFlag = song.title.toLowerCase().includes(str);
+                // }
 
-                if (drpDwnFilter[3].flag) {
-                    keyFlag = srchArr?.find(str => {
-                        return song.keywords?.find(keywrd => keywrd.toLowerCase() === str)
-                    })
-                }
+                // if (drpDwnFilter[2].flag) {
+                //     descFlag = song.description[0].toLowerCase().includes(str);
+                // }
 
-                return (titleFlag || descFlag || keyFlag);
+                // if (drpDwnFilter[3].flag) {
+                //     keyFlag = srchArr?.find(str => {
+                //         return song.keywords?.find(keywrd => keywrd.toLowerCase() === str)
+                //     })
+                // }
+
+                return result;
             })
         });
 
@@ -63,7 +73,7 @@ function SearchBody({ searchStr, drpDwnFilter }) {
 
     return <div>
         {
-            (filteredList.length === 0 && searchStrArr.length !== 0) ? <h3 style={{ textAlign: "center" }}>No Result found !!!</h3> :
+            (filteredList.length === 0 && searchStrArr.length !== 0) ? <h3 style={{ textAlign: "center" }}>No Result found. Please select correct search criteria !!!</h3> :
                 filteredList.map(song => <MusicList data-testid="music-list" key={song.title} {...song} searchStrArr={searchStrArr} filterChkArr={filterChkArr} />)
         }
     </div>

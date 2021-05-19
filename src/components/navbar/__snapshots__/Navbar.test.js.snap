@@ -38,66 +38,6 @@ exports[`Navbar   renders learn react link 1`] = `
           />
         </label>
       </div>
-      <div
-        className="checkboxContainer"
-      >
-        <label
-          className="container"
-          data-testid="Title"
-        >
-          Title
-          <input
-            checked={true}
-            data-testid="title"
-            onChange={[Function]}
-            type="checkbox"
-            value="title"
-          />
-          <span
-            className="checkmark"
-          />
-        </label>
-      </div>
-      <div
-        className="checkboxContainer"
-      >
-        <label
-          className="container"
-          data-testid="Description"
-        >
-          Description
-          <input
-            checked={false}
-            data-testid="desc"
-            onChange={[Function]}
-            type="checkbox"
-            value="desc"
-          />
-          <span
-            className="checkmark"
-          />
-        </label>
-      </div>
-      <div
-        className="checkboxContainer"
-      >
-        <label
-          className="container"
-          data-testid="Keywords"
-        >
-          Keywords
-          <input
-            checked={false}
-            data-testid="keywrds"
-            onChange={[Function]}
-            type="checkbox"
-            value="keywrds"
-          />
-          <span
-            className="checkmark"
-          />
-        </label>
-      </div>
     </div>
   </div>
   <div

@@ -45,7 +45,7 @@ describe("Check box", () => {
     const changeHandler = jest.fn();
     const item = {
       flag: true,
-      value: "keywrds",
+      value: "keywords",
       text: "Keywords",
     };
     const { getByTestId } = render(
@@ -59,7 +59,7 @@ describe("Check box", () => {
     const changeHandler = jest.fn();
     const item = {
       flag: true,
-      value: "desc",
+      value: "description",
       text: "Description",
     };
     const { getByTestId } = render(

@@ -40,8 +40,8 @@ describe("Search Body", () => {
   const drpDwnFilter = [
     { flag: false, value: "all", text: "All" },
     { flag: true, value: "title", text: "Title" },
-    { flag: false, value: "desc", text: "Description" },
-    { flag: false, value: "keywrds", text: "Keywords" },
+    { flag: false, value: "description", text: "Description" },
+    { flag: false, value: "keywords", text: "Keywords" },
   ];
 
   afterEach(() => {

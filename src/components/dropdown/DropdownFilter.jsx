@@ -1,18 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Checkbox from '../checkbox/CheckBox';
+import { context } from '../../App';
+import { CONSTANT } from '../../constant';
 
 function DropdownFilter({ getDrpDwnFilter }) {
-    const defaultArr =
-        [{ flag: false, value: 'all', text: 'All' },
-        { flag: true, value: 'title', text: 'Title' },
-        { flag: false, value: 'desc', text: 'Description' },
-        { flag: false, value: 'keywrds', text: 'Keywords' }];
+    const musicListArr = useContext(context);
+    let defaultArr = [{ flag: false, value: 'all', text: 'All' }];
+
+    let checkboxListArr = (musicListArr?.length > 0) ? Object.keys(musicListArr?.[0]) : [];
+
+    checkboxListArr?.forEach(value => {
+        CONSTANT.CHECKBOXES_LIST.forEach(item => {
+            if (value === item) {
+                defaultArr.push({
+                    flag: false,
+                    value: item.toLocaleLowerCase(),
+                    text: item.charAt(0).toUpperCase() + item.substr(1)
+                })
+            }
+        })
+    })
 
     const [checkedItems, setCheckedItems] = useState(defaultArr);
 
-
     const changeHandler = e => {
         const filteredArr = [...checkedItems];
+        let checkAllFlag = true;
 
         filteredArr.forEach(item => {
             if (e.target.value === 'all') {
@@ -23,7 +36,14 @@ function DropdownFilter({ getDrpDwnFilter }) {
             }
         })
 
-        if (filteredArr[1].flag && filteredArr[2].flag && filteredArr[3].flag) {
+        for (let i = 1; i < filteredArr.length; i++) {
+            if (!filteredArr[i]?.flag) {
+                checkAllFlag = false;
+                break;
+            }
+        }
+
+        if (checkAllFlag) {
             filteredArr[0].flag = true;
         }
 
