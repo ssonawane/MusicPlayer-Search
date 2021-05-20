@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Navbar.css";
+import style from "./Navbar.module.css";
 import SearchInput from "../searchinput/SearchInput";
 import DropdownFilter from "../dropdown/DropdownFilter";
 
@@ -12,7 +12,7 @@ function Navbar(props) {
         props.getDrpDwnFilter(filter);
     }
 
-    return <div className="main">
+    return <div className={style.main}>
         <DropdownFilter getDrpDwnFilter={getDrpDwnFilter} />
         <SearchInput getSearchIp={getSearchIp} />
     </div>

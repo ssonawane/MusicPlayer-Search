@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import Checkbox from '../checkbox/CheckBox';
 import { context } from '../../App';
 import { CONSTANT } from '../../constant';
+import style from './DropdownFilter.module.css';
 
 function DropdownFilter({ getDrpDwnFilter }) {
     const musicListArr = useContext(context);
@@ -54,11 +55,11 @@ function DropdownFilter({ getDrpDwnFilter }) {
         getDrpDwnFilter(checkedItems);
     }, [checkedItems])
 
-    return <div className="dropdown">
-        <a href="#" data-testid="activity" className="dropbtn">
+    return <div className={style.dropdown}>
+        <a href="#" data-testid="activity" className={style.dropbtn}>
             Activities
         </a>
-        <div data-testid="drpdwn-content" className="dropdown-content">
+        <div data-testid="drpdwn-content" className={style.dropdownContent}>
             {
                 checkedItems.map(item => <Checkbox key={item.value} changeHandler={changeHandler} {...item} />)
             }

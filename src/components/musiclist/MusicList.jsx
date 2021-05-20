@@ -17,7 +17,6 @@ function MusicList({ title, supplement_information, description, links, searchSt
         }
     })
 
-    console.log(CONSTANT)
     return <div className={style.listHeader}>
         <div data-testid="img-placeholder">
             <img src='./music_placeholder.png' className={style.imgHolder} alt="" />
@@ -25,7 +24,7 @@ function MusicList({ title, supplement_information, description, links, searchSt
         <div className={style.songDetails}>
             {
                 filterChkArr.map(data => (
-                    (data.value === CONSTANT.TITLE) && <p data-testid="title"><strong>{data.flag ? <Highlighter
+                    (data.value === CONSTANT.TITLE) && <p key={data.value} data-testid="title"><strong>{data.flag ? <Highlighter
                         highlightClassName={style.highlight}
                         searchWords={searchStrArr}
                         autoEscape={true}
@@ -40,7 +39,7 @@ function MusicList({ title, supplement_information, description, links, searchSt
 
             {
                 filterChkArr.map(data => (
-                    (data.value === CONSTANT.DESCRIPTION) && <p data-testid="description" className={style.descFont}>{(data.flag) ? <Highlighter
+                    (data.value === CONSTANT.DESCRIPTION) && <p key={data.value} data-testid="description" className={style.descFont}>{(data.flag) ? <Highlighter
                         highlightClassName={style.highlight}
                         searchWords={searchStrArr}
                         autoEscape={true}

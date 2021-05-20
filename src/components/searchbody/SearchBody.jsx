@@ -18,7 +18,6 @@ function SearchBody({ searchStr, drpDwnFilter }) {
 
     useEffect(() => {
         let srchArr = [];
-        let titleFlag, descFlag, keyFlag;
 
         setSearchStrArr(searchStr.split(' '));
         setFilterChkArr(drpDwnFilter);
@@ -27,7 +26,6 @@ function SearchBody({ searchStr, drpDwnFilter }) {
 
 
         const results = songsList.filter(song => {
-            titleFlag = descFlag = keyFlag = false;
             return srchArr?.find(str => {
                 str = str.toLowerCase();
                 let result = false;
@@ -41,20 +39,6 @@ function SearchBody({ searchStr, drpDwnFilter }) {
                     }
                 }
 
-                // if (drpDwnFilter[1].flag) {
-                //     titleFlag = song.title.toLowerCase().includes(str);
-                // }
-
-                // if (drpDwnFilter[2].flag) {
-                //     descFlag = song.description[0].toLowerCase().includes(str);
-                // }
-
-                // if (drpDwnFilter[3].flag) {
-                //     keyFlag = srchArr?.find(str => {
-                //         return song.keywords?.find(keywrd => keywrd.toLowerCase() === str)
-                //     })
-                // }
-
                 return result;
             })
         });
@@ -66,14 +50,12 @@ function SearchBody({ searchStr, drpDwnFilter }) {
             setFilteredList(songsList);
         }
 
-        //setFilteredList(results);
-
     }, [searchStr, drpDwnFilter])
 
 
     return <div>
         {
-            (filteredList.length === 0 && searchStrArr.length !== 0) ? <h3 style={{ textAlign: "center" }}>No Result found. Please select correct search criteria !!!</h3> :
+            (filteredList.length === 0 && searchStrArr.length !== 0) ? <h3 style={{ textAlign: "center" }}>No Result found !!. Please select correct search criteria.</h3> :
                 filteredList.map(song => <MusicList data-testid="music-list" key={song.title} {...song} searchStrArr={searchStrArr} filterChkArr={filterChkArr} />)
         }
     </div>

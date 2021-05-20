@@ -1,0 +1,19 @@
+.search {
+  flex: 1;
+}
+
+.search input {
+  height: 30px;
+  width: 300px;
+  padding-left: 10px;
+}
+
+@media (max-width: 768px) {
+  .search {
+    margin: 8px;
+  }
+
+  .search input {
+    width: 280px;
+  }
+}
